@@ -22,7 +22,7 @@ import {
     findFigureCaptions,
     extractTablesFromDocument,
 } from "@/lib/pdf-utils"
-import { callGeminiApi, callGeminiTTSApi } from "@/lib/gemini-api"
+import { callGeminiApi, callElevenLabsTTS } from "@/lib/gemini-api"
 import { StructuredTable, Figure, HistoryEntry, ExtractionDiagnostics, PDFDocumentProxy, Annotation, Drawing } from "@/types/pdf-qa"
 
 import PDFViewer from "@/components/pdf-qa/PDFViewer"
@@ -127,7 +127,7 @@ const PDFQAApp = () => {
         setStatusMessage("✨ Generating audio...")
 
         try {
-            const audioUrl = await callGeminiTTSApi(text)
+            const audioUrl = await callElevenLabsTTS(text)
             const newAudio = new Audio(audioUrl)
 
             newAudio.onplay = () => {

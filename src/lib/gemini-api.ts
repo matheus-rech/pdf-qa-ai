@@ -86,7 +86,7 @@ export const callGeminiApi = async (prompt: string, expectJson = false) => {
     }
 }
 
-export const callGeminiTTSApi = async (textToSpeak: string) => {
+export const callElevenLabsTTS = async (textToSpeak: string) => {
     const apiKey = process.env.NEXT_PUBLIC_ELEVENLABS_API_KEY || ""
     const voiceId = "21m00Tcm4TlvDq8ikWAM" // Rachel - clear, professional voice
     const apiUrl = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`
@@ -118,7 +118,7 @@ export const callGeminiTTSApi = async (textToSpeak: string) => {
         const audioUrl = URL.createObjectURL(audioBlob)
         return audioUrl
     } catch (error) {
-        console.error("callGeminiTTSApi Error:", error)
+        console.error("callElevenLabsTTS Error:", error)
         throw error
     }
 }

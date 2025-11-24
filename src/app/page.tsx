@@ -426,7 +426,7 @@ const PDFQAApp = () => {
     };
 
     // Gemini TTS API Call
-    const callGeminiTTSApi = async (textToSpeak: string) => {
+    const callElevenLabsTTS = async (textToSpeak: string) => {
         // Stop any currently playing audio
         if (audioPlayer) {
             audioPlayer.pause();
@@ -483,7 +483,7 @@ const PDFQAApp = () => {
                 throw new Error("Invalid TTS response format or no audio data.");
             }
         } catch (error) {
-            console.error("callGeminiTTSApi Error:", error);
+            console.error("callElevenLabsTTS Error:", error);
             throw error; // Re-throw to be caught by the handler
         }
     };
@@ -508,7 +508,7 @@ const PDFQAApp = () => {
         setStatusMessage("✨ Generating audio...");
 
         try {
-            const audioUrl = await callGeminiTTSApi(text);
+            const audioUrl = await callElevenLabsTTS(text);
             const newAudio = new Audio(audioUrl);
 
             newAudio.onplay = () => {
