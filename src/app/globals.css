@@ -24,3 +24,50 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* PDF.js TextLayer Styles */
+.textLayer {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+  opacity: 1;
+  line-height: 1;
+  text-align: initial;
+  pointer-events: auto;
+}
+
+.textLayer span,
+.textLayer br {
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0% 0%;
+  overflow: hidden;
+  display: inline-block;
+  word-wrap: normal;
+}
+
+.textLayer span::selection {
+  background: rgba(0, 100, 255, 0.3);
+}
+
+.textLayer .highlighted {
+  background: rgba(255, 193, 7, 0.5);
+  border-radius: 2px;
+}
+
+.textLayer .highlighted-active {
+  background: rgba(76, 175, 80, 0.6);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { background: rgba(76, 175, 80, 0.6); }
+  50% { background: rgba(76, 175, 80, 0.3); }
+}
+
+.pdfPageContainer {
+  position: relative;
+  display: inline-block;
+}
